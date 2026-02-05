@@ -1,0 +1,1241 @@
+/* Import Bootstrap CSS */
+@import url('/css/bootstrap.min.css');
+@import url('/css/bootstrap-icons.css');
+
+/* ================================
+   PERFORMANCE OPTIMIZATIONS
+   ================================ */
+
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optimize scrolling performance */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* GPU acceleration for animations */
+.property-card,
+.card,
+.city-card,
+.builder-card,
+.btn {
+  will-change: transform;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Optimize images for loading */
+img {
+  content-visibility: auto;
+}
+
+/* Prevent layout shift during loading */
+.skeleton-loader {
+  background: linear-gradient(
+    90deg,
+    #f0f0f0 25%,
+    #e0e0e0 50%,
+    #f0f0f0 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* Smooth transitions for interactive elements */
+a, button, .btn, .card, .property-card {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Prevent double-click issues */
+button, .btn, a {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Optimize scroll containers */
+.hide-scrollbar,
+[style*="overflowX: auto"],
+[style*="overflow-x: auto"] {
+  -webkit-overflow-scrolling: touch;
+  scroll-behavior: smooth;
+  contain: layout style paint;
+}
+
+/* ================================
+   Utility SECTION STYLES
+   ================================ */
+/* 
+   .pepsi {
+    color: #0046be;
+    font-weight: 600;
+   }
+    .pepsi:hover {
+      color: #0031a3;
+    }
+    .pepsiback {
+      background-color: #0046be;
+      color: white;
+      font-weight: 600;
+    } */
+
+/* ================================
+   MOBILE MENU ANIMATIONS
+   ================================ */
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-dropdown {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  animation: slideDown 0.3s ease-out;
+}
+
+.mobile-menu-dropdown .hover-bg-light:hover {
+  background-color: #f8f9fa !important;
+}
+
+.mobile-menu-dropdown .btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ================================
+   CUSTOM PRIMARY COLOR UTILITIES
+   ================================ */
+
+/* Custom primary color: rgb(0, 30, 121) */
+:root {
+  --bs-custom-primary: rgb(0, 30, 121);
+  --bs-custom-primary-rgb: 0, 30, 121;
+}
+
+/* Text color utilities */
+.text-custom-primary {
+  color: rgb(0, 30, 121) !important;
+}
+
+/* Background color utilities */
+.bg-custom-primary {
+  background-color: rgb(0, 30, 121) !important;
+}
+
+.bg-custom-primary-gradient {
+  background: linear-gradient(135deg, rgb(0, 30, 121), rgb(0, 50, 150)) !important;
+}
+
+/* Button utilities */
+.btn-custom-primary {
+  background-color: rgb(0, 30, 121);
+  border-color: rgb(0, 30, 121);
+  color: white;
+}
+
+.btn-custom-primary:hover {
+  background-color: rgb(0, 40, 140);
+  border-color: rgb(0, 40, 140);
+  color: white;
+}
+
+.btn-custom-primary:focus {
+  background-color: rgb(0, 30, 121);
+  border-color: rgb(0, 30, 121);
+  box-shadow: 0 0 0 0.25rem rgba(0, 30, 121, 0.25);
+}
+
+/* Outline button utilities */
+.btn-outline-custom-primary {
+  color: rgb(0, 30, 121);
+  border-color: rgb(0, 30, 121);
+  background-color: transparent;
+}
+
+.btn-outline-custom-primary:hover {
+  background-color: rgb(0, 30, 121);
+  border-color: rgb(0, 30, 121);
+  color: white;
+}
+
+.btn-outline-custom-primary:focus {
+  box-shadow: 0 0 0 0.25rem rgba(0, 30, 121, 0.25);
+}
+
+/* Border utilities */
+.border-custom-primary {
+  border-color: rgb(0, 30, 121) !important;
+}
+
+/* Badge utilities */
+.badge-custom-primary {
+  background-color: rgb(0, 30, 121);
+  color: white;
+}
+
+/* Spinner utilities */
+.spinner-custom-primary {
+  color: rgb(0, 30, 121) !important;
+}
+
+/* ================================
+   PROPERTY CARD STYLES
+   ================================ */
+   .property-card {
+     transition: transform 0.3s ease, box-shadow 0.3s ease;
+     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+   }
+
+   
+   .hover-effect:hover {
+     transform: translateY(-5px);
+     box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35) !important;
+   }
+    
+/* ================================
+   HERO SECTION STYLES
+   ================================ */
+
+.heroSection {
+  margin-top: 4rem;  
+  height: 75vh;        /* section always 75% of screen height */
+}
+
+/* Responsive hero section */
+@media (max-width: 768px) {
+  .heroSection {
+    margin-top: 3.5rem;
+    height: 60vh;
+  }
+}
+
+@media (max-width: 576px) {
+  .heroSection {
+    margin-top: 3rem;
+    height: 50vh;
+  }
+}
+
+/* Hero Search Bar Styles */
+.heroSearch {
+  z-index: 10;
+}
+
+.searchContainer {
+  background: rgba(0, 0, 0, 0.4); /* Light black transparent background */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.searchContainer .input-group-text {
+  border-right: none !important;
+  background: transparent;
+  border-color: rgba(255, 255, 255, 0.3);
+  color: white;
+}
+
+.searchContainer .form-control,
+.searchContainer .form-select {
+  border-left: none !important;
+  border-color: rgba(255, 255, 255, 0.3);
+  box-shadow: none;
+  background: transparent;
+  color: white;
+}
+
+.searchContainer .form-control::placeholder {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.searchContainer .form-control:focus,
+.searchContainer .form-select:focus {
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.1);
+  background: transparent;
+  color: white;
+}
+
+.searchContainer .form-select option {
+  background: #333;
+  color: white;
+}
+
+.searchContainer .btn-danger {
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 4px 15px rgba(220, 53, 69, 0.3);
+}
+
+/* Legacy hero text styles (kept for compatibility) */
+.heroText {
+  background: rgba(0, 0, 0, 0.4);   /* light black transparent background */
+  padding: 1.5rem 2rem;             /* space around text */
+  border-radius: 12px;              /* smooth corners */
+  backdrop-filter: blur(6px);       /* adds blur effect behind */
+  -webkit-backdrop-filter: blur(6px); /* Safari support */
+}
+
+/* ================================
+   HIDE SCROLLBAR UTILITY CLASS
+   ================================ */
+
+/* Hide scrollbar but keep functionality - works for all browsers */
+.hide-scrollbar {
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none; /* WebKit browsers (Chrome, Safari, Edge) */
+}
+
+/* ================================
+   BUILDER CARDS SECTION
+   ================================ */
+
+.builderCards {
+  overflow-x: auto;        /* enable horizontal scroll */
+  scroll-behavior: smooth; /* smooth scrolling */
+  padding: 1rem 0;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.builderCards::-webkit-scrollbar {
+  display: none; /* WebKit browsers */
+}
+
+/* ================================
+   FEATURED LISTINGS SECTION
+   ================================ */
+
+.featuredCards {
+  overflow-x: auto;        /* enable horizontal scroll */
+  scroll-behavior: smooth; /* smooth scrolling */
+  padding: 1rem 0;
+  /* Hide scrollbar but keep functionality */
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* Internet Explorer 10+ */
+}
+
+.featuredCards::-webkit-scrollbar {
+  display: none; /* WebKit browsers */
+}
+
+/* ================================
+   BUILDER PAGE STYLES
+   ================================ */
+
+/* Builder Hero Section - 75% Screen Height */
+.builder-hero-section {
+  height: 75vh;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 4rem;
+}
+
+.builder-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* Builder Info Overlay - Left Bottom Position */
+.builder-info-overlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  right: auto;
+  transform: none;
+  z-index: 2;
+  max-width: 700px;
+}
+
+/* Builder Info Card - Slim Design for Left Bottom */
+.builder-info-card {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 15px;
+  padding: 1.5rem;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+}
+
+.builder-info-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Builder Header - Compact for Left Bottom */
+.builder-header {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  padding-bottom: 1rem;
+  margin-bottom: 1rem;
+}
+
+.builder-name {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  letter-spacing: -0.5px;
+}
+
+.builder-logo {
+  background: rgba(255, 255, 255, 0.9);
+  /* padding: 0.4rem; */
+  border-radius: 5px;
+
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+/* Builder Details - Compact Layout */
+.builder-details {
+  margin-top: 0;
+}
+
+.detail-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0.75rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.detail-item:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+.detail-item i {
+  font-size: 1.5rem;
+  color: #0046be;
+  margin-bottom: 0.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.detail-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 0.25rem;
+  display: block;
+}
+
+.detail-value {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+.detail-link {
+  color: #0046be;
+  text-decoration: none;
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.9);
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.detail-link:hover {
+  background: white;
+  color: #0031a3;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0, 70, 190, 0.3);
+}
+
+/* Properties Section */
+.builder-properties-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 40vh;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #0046be;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80px;
+  height: 4px;
+  background: linear-gradient(90deg, #0046be, #0031a3);
+  border-radius: 2px;
+}
+
+.properties-description {
+  font-size: 1.1rem;
+  color: #6c757d;
+  line-height: 1.8;
+  max-width: 800px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+/* ================================
+   CITY CARDS STYLES - 4 in a row, 30% slimmer
+   ================================ */
+
+.city-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 12px !important;
+  padding: 0 !important;
+  margin: 0 !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25) !important;
+}
+
+.city-card .card-body {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+.city-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35) !important;
+}
+
+.city-card-image {
+  height: 105px; /* 30% slimmer than original 150px */
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.city-card .card-img-top {
+  transition: transform 0.3s ease;
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+.city-card:hover .card-img-top {
+  transform: scale(1.05);
+}
+
+/* ================================
+   CITY PAGE STYLES
+   ================================ */
+
+/* City Hero Section - 75% Screen Height */
+.city-hero-section {
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+  margin-top: 4rem;
+}
+
+.city-hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+/* City Name Overlay - Bottom Left Position */
+.city-name-overlay {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  z-index: 2;
+  max-width: 600px;
+}
+
+.city-name {
+  font-size: 4rem;
+  font-weight: 800;
+  color: white;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  letter-spacing: -1px;
+  margin-bottom: 0.5rem;
+  line-height: 1;
+  animation: fadeInUp 1s ease-out;
+}
+
+.city-subtitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  margin-bottom: 0;
+  line-height: 1.4;
+  animation: fadeInUp 1s ease-out 0.3s both;
+}
+
+/* City Properties Section */
+.city-properties-section {
+  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  min-height: 40vh;
+}
+
+/* Legacy styles for compatibility */
+.cityherosectionIMG,.builderherosectionIMG {
+  height: 75vh; /* Adjust height as needed */
+}
+
+
+/* ================================
+   TABLET BUILDER CARD STYLES
+   ================================ */
+
+/* Builder cards - 300px width on tablet */
+@media (min-width: 768px) and (max-width: 991px) {
+  .builderCards .builder-card-link {
+    width: 300px !important;
+  }
+  
+  /* Featured cards - 320px width on tablet */
+  .featuredCards .featured-card-link {
+    width: 320px !important;
+  }
+  
+  /* Property cards - 320px width on tablet */
+  .property-card {
+    max-width: 320px !important;
+  }
+  
+  /* PropertyBigCard - full width on tablet (override property-card max-width) */
+  .property-big-card,
+  .property-card.property-big-card {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ================================
+   DESKTOP BUILDER CARD STYLES
+   ================================ */
+
+/* Builder cards - 450px width on desktop */
+@media (min-width: 992px) {
+  .builderCards .builder-card-link {
+    width: 450px !important;
+  }
+  
+  /* Featured cards - 450px width on desktop */
+  .featuredCards .featured-card-link {
+    width: 450px !important;
+  }
+  
+  /* Property cards - 350px width on desktop */
+  .property-card {
+    max-width: 350px !important;
+  }
+  
+  /* PropertyBigCard - full width on desktop (override property-card max-width) */
+  .property-big-card,
+  .property-card.property-big-card {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+}
+
+/* ================================
+   SERVICES SECTION RESPONSIVE STYLES
+   ================================ */
+
+/* Mobile Services Cards - Smaller and more compact */
+@media (max-width: 767px) {
+  .services-title {
+    font-size: 1.75rem !important;
+  }
+  
+  .services-underline {
+    width: 60px !important;
+    height: 1px !important;
+  }
+  
+  .service-card {
+    min-height: 250px !important;
+  }
+  
+  .service-icon {
+    font-size: 2rem !important;
+  }
+  
+  .service-title {
+    font-size: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .service-description {
+    font-size: 0.75rem !important;
+    line-height: 1.3 !important;
+  }
+  
+  .service-button {
+    padding: 0.375rem 0.75rem !important;
+    font-size: 0.75rem !important;
+  }
+  
+  .cta-text {
+    font-size: 1rem !important;
+  }
+  
+  .cta-button {
+    padding: 0.5rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* Tablet Services Cards - Medium size */
+@media (min-width: 768px) and (max-width: 991px) {
+  .service-card {
+    min-height: 350px !important;
+  }
+  
+  .service-icon {
+    font-size: 2.5rem !important;
+  }
+  
+  .service-title {
+    font-size: 1.25rem !important;
+  }
+  
+  .service-description {
+    font-size: 0.875rem !important;
+  }
+  
+  .service-button {
+    padding: 0.5rem 1rem !important;
+    font-size: 0.875rem !important;
+  }
+}
+
+/* Desktop Services Cards - Full size */
+@media (min-width: 992px) {
+  .service-card {
+    min-height: 400px !important;
+  }
+  
+  .service-icon {
+    font-size: 3rem !important;
+  }
+  
+  .service-title {
+    font-size: 1.5rem !important;
+  }
+  
+  .service-description {
+    font-size: 1rem !important;
+  }
+  
+  .service-button {
+    padding: 0.75rem 1.5rem !important;
+    font-size: 0.9rem !important;
+  }
+}
+
+/* ================================
+   WHATSAPP BUTTON STYLES
+   ================================ */
+.whatsapp-button-container {
+  bottom: 100px;
+  right: 40px;
+  z-index: 9999;
+}
+
+/* ================================
+   MOBILE RESPONSIVE STYLES
+   ================================ */
+
+/* Filter Section Mobile Responsive */
+@media (max-width: 767px) {
+  .card-body {
+    padding: 1rem !important;
+  }
+  
+  .form-label {
+    font-size: 0.9rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+  
+  .form-select, .form-control {
+    font-size: 0.9rem !important;
+    padding: 0.5rem 0.75rem !important;
+  }
+  
+  .badge {
+    font-size: 0.75rem !important;
+    padding: 0.4rem 0.6rem !important;
+  }
+  
+  .btn-sm {
+    font-size: 0.8rem !important;
+    padding: 0.4rem 0.8rem !important;
+  }
+  
+  .small {
+    font-size: 0.75rem !important;
+  }
+  
+  /* Price range slider mobile adjustments */
+  .dual-range-slider {
+    margin: 10px 0 !important;
+  }
+  
+  /* Manual input fields mobile layout */
+  .row.g-2 .col-6 {
+    padding-left: 0.25rem !important;
+    padding-right: 0.25rem !important;
+  }
+  
+  /* Filter card mobile spacing */
+  .card-title {
+    font-size: 1.1rem !important;
+  }
+  
+  .mb-3 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .mb-4 {
+    margin-bottom: 1.25rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .form-label {
+    font-size: 0.95rem !important;
+  }
+  
+  .form-select, .form-control {
+    font-size: 0.95rem !important;
+  }
+  
+  .badge {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Top Builder Section Text Responsive */
+@media (max-width: 767px) {
+  .topBuilderSection .fs-6 {
+    font-size: 1.1rem !important;
+    line-height: 1.4;
+  }
+  
+  .topBuilderSection .small {
+    font-size: 0.8rem !important;
+  }
+  
+  .topBuilderSection .gap-3 {
+    gap: 0.5rem !important;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  .topBuilderSection .fs-5 {
+    font-size: 1.3rem !important;
+    line-height: 1.5;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Adjust button sizes for mobile */
+  .btn-lg {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+  
+  /* Better spacing for mobile */
+  .py-5 {
+    padding-top: 2rem !important;
+    padding-bottom: 2rem !important;
+  }
+  
+  /* Card adjustments for mobile */
+  .card-body {
+    padding: 1rem !important;
+  }
+  
+  /* Builder cards - 200px width on mobile as requested */
+  .builderCards .builder-card-link {
+    width: 260px !important;
+    height: 150px;
+  }
+  
+  /* Featured cards width for mobile/tablet */
+  .featuredCards .featured-card-link {
+    width: 280px !important;
+  }
+  
+  /* Property cards - smaller on mobile */
+  .property-card {
+    max-width: 280px !important;
+  }
+  
+  /* PropertyBigCard - full width on mobile (override property-card max-width) */
+  .property-big-card,
+  .property-card.property-big-card {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+  
+  /* Property card image height on mobile */
+  .property-card .position-relative {
+    height: 180px !important;
+  }
+  
+  /* Smaller card heights on mobile */
+  .builderCards .position-relative {
+    height: 200px !important;
+  }
+  
+  .featuredCards .position-relative {
+    height: 180px !important;
+  }
+  
+  /* City Cards Mobile - 2 in a row */
+  .city-card-image {
+    height: 90px; /* Smaller on mobile */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .city-card {
+    margin-bottom: 1rem;
+  }
+  
+  /* Builder Page Mobile Responsive */
+  .builder-hero-section {
+    height: 60vh;
+    margin-top: 3.5rem;
+  }
+  
+  .builder-info-overlay {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+  
+  .builder-info-card {
+    padding: 1.2rem;
+  }
+  
+  .builder-name {
+    font-size: 1.5rem;
+  }
+  
+  .builder-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 0.75rem;
+    padding-bottom: 0.75rem;
+    margin-bottom: 0.75rem;
+  }
+  
+  .builder-logo {
+    align-self: center;
+  }
+  
+  .detail-item {
+    padding: 0.6rem;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+  
+  .properties-description {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+  
+  /* City Page Mobile Responsive */
+  .city-hero-section {
+    height: 60vh;
+    margin-top: 3.5rem;
+  }
+  
+  .city-name-overlay {
+    bottom: 1rem;
+    left: 1rem;
+    right: 1rem;
+    max-width: none;
+  }
+  
+  .city-name {
+    font-size: 2.5rem;
+  }
+  
+  .city-subtitle {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 576px) {
+  /* Extra small devices adjustments */
+  .container {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+  
+  /* Smaller text on mobile */
+  .display-6 {
+    font-size: 1.75rem !important;
+  }
+  
+  .fs-6 {
+    font-size: 1rem !important;
+  }
+  
+  /* Tighter spacing for mobile */
+  .mb-4 {
+    margin-bottom: 1rem !important;
+  }
+  
+  .mt-4 {
+    margin-top: 1rem !important;
+  }
+  
+  /* Builder Page Extra Small Devices */
+  .builder-hero-section {
+    height: 50vh;
+    margin-top: 3rem;
+  }
+  
+  .builder-info-overlay {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .builder-info-card {
+    padding: 1rem;
+    border-radius: 12px;
+  }
+  
+  .builder-name {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  
+  .builder-details .row {
+    --bs-gutter-x: 0.5rem;
+  }
+  
+  .detail-item {
+    padding: 0.5rem;
+    margin-bottom: 0.25rem;
+  }
+  
+  .detail-value {
+    font-size: 0.9rem;
+  }
+  
+  .detail-link {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .properties-description {
+    font-size: 0.95rem;
+  }
+  
+  /* City Cards Extra Small - 1 in a row */
+  .city-card-image {
+    height: 80px; /* Even smaller on extra small devices */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  /* City Page Extra Small Devices */
+  .city-hero-section {
+    height: 50vh;
+    margin-top: 3rem;
+  }
+  
+  .city-name-overlay {
+    bottom: 0.5rem;
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+  
+  .city-name {
+    font-size: 2rem;
+  }
+  
+  .city-subtitle {
+    font-size: 0.9rem;
+  }
+}
+
+/* ================================
+   CARD ANIMATIONS & INTERACTIONS
+   ================================ */
+
+/* Smooth transitions for responsive elements */
+.card {
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2) !important;
+}
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3) !important;
+}
+
+/* ================================
+   MOBILE MENU ANIMATIONS
+   ================================ */
+
+/* Ensure mobile menu button is visible */
+.btn.d-lg-none {
+  z-index: 1060;
+  position: relative;
+}
+
+/* Mobile menu dropdown styling */
+.mobile-menu-dropdown {
+  animation: slideDown 0.3s ease-out;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.mobile-menu-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.mobile-menu-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.mobile-menu-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mobile-menu-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* ================================
+   FOOTER MOBILE RESPONSIVE FIX
+   ================================ */
+
+/* Remove white space below footer on mobile */
+@media (max-width: 991.98px) {
+  body {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  html {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  footer {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+  
+  /* Ensure main content has padding for mobile nav, but footer doesn't */
+  main, #__next > div:first-child {
+    padding-bottom: 80px !important;
+  }
+  
+  /* Footer should be above mobile nav */
+  footer {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0 !important;
+  }
+}

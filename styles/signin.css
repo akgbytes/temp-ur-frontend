@@ -1,0 +1,174 @@
+/* Sign In Modal Styles */
+.signin-modal {
+  z-index: 1060;
+}
+
+.signin-modal .modal-content {
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.signin-modal .modal-header {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  color: white;
+}
+
+.signin-modal .modal-header .btn-close {
+  filter: invert(1);
+}
+
+/* OTP Input Styles */
+.otp-input {
+  width: 50px;
+  height: 50px;
+  border: 2px solid #dee2e6;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  transition: all 0.3s ease;
+}
+
+.otp-input:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+  outline: none;
+}
+
+.otp-input.filled {
+  border-color: #28a745;
+  background-color: #f8fff9;
+}
+
+/* Country Code Selector */
+.country-selector {
+  min-width: 120px;
+  border-right: none;
+}
+
+.country-selector:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Phone Number Input */
+.phone-input {
+  border-left: none;
+}
+
+.phone-input:focus {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Loading States */
+.btn-loading {
+  position: relative;
+  pointer-events: none;
+}
+
+.btn-loading .spinner-border-sm {
+  width: 1rem;
+  height: 1rem;
+}
+
+/* Animation for step transitions */
+.step-transition {
+  animation: slideIn 0.3s ease-in-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+  .signin-modal .modal-dialog {
+    margin: 1rem;
+  }
+  
+  .otp-input {
+    width: 45px;
+    height: 45px;
+    font-size: 1rem;
+  }
+  
+  .signin-modal .modal-content {
+    border-radius: 12px;
+  }
+}
+
+/* Custom Button Styles */
+.btn-signin {
+  background: linear-gradient(135deg, #dc3545, #c82333);
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  padding: 12px 24px;
+  transition: all 0.3s ease;
+}
+
+.btn-signin:hover {
+  background: linear-gradient(135deg, #c82333, #a71e2a);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(220, 53, 69, 0.3);
+}
+
+.btn-signin:disabled {
+  background: #6c757d;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Form Validation Styles */
+.form-control.is-invalid {
+  border-color: #dc3545;
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+.form-control.is-valid {
+  border-color: #28a745;
+  box-shadow: 0 0 0 0.2rem rgba(40, 167, 69, 0.25);
+}
+
+/* Alert Styles */
+.alert-danger {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+  color: #721c24;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+/* Link Styles */
+.btn-link {
+  color: #dc3545;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: #c82333;
+  text-decoration: underline;
+}
+
+/* Success State */
+.success-checkmark {
+  color: #28a745;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+/* Error State */
+.error-icon {
+  color: #dc3545;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}

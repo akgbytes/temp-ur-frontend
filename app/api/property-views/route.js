@@ -1,0 +1,103 @@
+import { NextResponse } from 'next/server';
+
+const BACKEND_URL = process.env.NEXT_PUBLIC_BACKEND_URL || process.env.BACKEND_URL || (process.env.NODE_ENV === 'production' ? 'http://10.0.2.144:80' : 'http://localhost:3012');
+
+export async function GET(request) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const endpoint = searchParams.get('endpoint') || '';
+    
+    // Build backend URL based on endpoint
+    let backendUrl = `${BACKEND_URL}/api/property-views`;
+    if (endpoint) {
+      backendUrl += `/${endpoint}`;
+    }
+    
+    // Add query parameters
+    const params = new URLSearchParams();
+    searchParams.forEach((value, key) => {
+      if (key !== 'endpoint') {
+        params.append(key, value);
+      }
+    });
+    
+    if (params.toString()) {
+      backendUrl += `?${params.toString()}`;
+    }
+
+    const response = await fetch(backendUrl, {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      return NextResponse.json(
+        { success: false, error: 'Failed to fetch property views' },
+        { status: response.status }
+      );
+    }
+
+    const data = await response.json();
+    return NextResponse.json(data, { status: response.status });
+  } catch (error) {
+    console.error('Property Views API GET error:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to fetch property views' },
+      { status: 500 }
+    );
+  }
+}
+
+export async function OPTIONS(request) {
+  return new NextResponse(null, {
+    status: 200,
+    headers: {
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+    },
+  });
+}
+
+export async function POST(request) {
+  try {
+    console.log('[Property Views API] POST request received');
+    const body = await request.json();
+    console.log('[Property Views API] Request body:', JSON.stringify(body));
+    
+    const backendUrl = `${BACKEND_URL}/api/property-views/track`;
+    console.log('[Property Views API] Calling backend:', backendUrl.replace(BACKEND_URL, 'BACKEND_URL'));
+    
+    const response = await fetch(backendUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    console.log('[Property Views API] Backend response status:', response.status);
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('[Property Views API] Backend error:', response.status, errorText);
+      return NextResponse.json(
+        { success: false, error: 'Failed to track property view' },
+        { status: response.status }
+      );
+    }
+
+    const data = await response.json();
+    console.log('[Property Views API] Success');
+    return NextResponse.json(data, { status: response.status });
+  } catch (error) {
+    console.error('[Property Views API] Exception:', error);
+    return NextResponse.json(
+      { success: false, error: 'Failed to track property view', details: error.message },
+      { status: 500 }
+    );
+  }
+}
+
